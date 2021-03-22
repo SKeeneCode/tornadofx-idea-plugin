@@ -72,8 +72,8 @@ class InjectComponentAction : AnAction() {
             return
         }
 
-        val psiFacade = JavaPsiFacade.getInstance(e.project)
-        val psiClass = psiFacade.findClass(ktClass.fqName.toString(), e.project!!.allScope())!!
+        val psiFacade = e.project?.let { JavaPsiFacade.getInstance(it) }
+        val psiClass = psiFacade?.findClass(ktClass.fqName.toString(), e.project!!.allScope())!!
 
         e.presentation.isEnabled = isComponent(psiClass)
     }

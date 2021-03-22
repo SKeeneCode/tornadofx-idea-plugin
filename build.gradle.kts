@@ -8,6 +8,7 @@ plugins {
     java
     kotlin("jvm") version "1.4.0"
     id("org.jetbrains.intellij") version "0.4.21"
+    id("org.openjfx.javafxplugin") version "0.0.9"
 }
 
 group = "no.tornado"
@@ -21,13 +22,30 @@ repositories {
 }
 
 intellij {
-    version = "2020.2"
+    version = "2020.3"
     //updateSinceUntilBuild = false
     setPlugins("java", "properties", "org.jetbrains.kotlin:1.4.0-release-IJ2020.2-1")
 }
 
+javafx {
+    version = "16"
+    modules = mutableListOf(
+        "javafx.controls",
+        "javafx.graphics",
+        "javafx.fxml",
+    "javafx.swing")
+}
+
+tasks.runIde {
+    jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+}
+tasks.buildSearchableOptions {
+    jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+}
+
 tasks {
     // withType<PatchPluginXmlTask> { }
+
 
     withType<PublishTask> {
         username(publishUsername)

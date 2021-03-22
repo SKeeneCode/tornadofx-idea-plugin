@@ -94,7 +94,7 @@ public class TornadoFXSettingsEditor extends SettingsEditor<TornadoFXConfigurati
 		configuration.LIVE_VIEWS = liveViewsButton.isSelected();
 		configuration.setAlternativeJrePath(myJrePathEditor.getJrePathOrName());
 		configuration.setAlternativeJrePathEnabled(myJrePathEditor.isAlternativeJreSelected());
-		configuration.setSwingInspectorEnabled((myVersionDetector.isJre50Configured(configuration) || myVersionDetector.isModuleJre50Configured(configuration)) && myShowSwingInspectorCheckbox.isSelected());
+		//configuration.setSwingInspectorEnabled((myVersionDetector.isJre50Configured(configuration) || myVersionDetector.isModuleJre50Configured(configuration)) && myShowSwingInspectorCheckbox.isSelected());
 		updateShowSwingInspector(configuration);
 	}
 
@@ -122,12 +122,12 @@ public class TornadoFXSettingsEditor extends SettingsEditor<TornadoFXConfigurati
 	private void updateShowSwingInspector(final TornadoFXConfiguration configuration) {
 		if (myVersionDetector.isJre50Configured(configuration) || myVersionDetector.isModuleJre50Configured(configuration)) {
 			myShowSwingInspectorCheckbox.setEnabled(true);
-			myShowSwingInspectorCheckbox.setSelected(configuration.isSwingInspectorEnabled());
-			myShowSwingInspectorCheckbox.setText(ExecutionBundle.message("show.swing.inspector"));
+			//myShowSwingInspectorCheckbox.setSelected(configuration.isSwingInspectorEnabled());
+			//myShowSwingInspectorCheckbox.setText(ExecutionBundle.message("show.swing.inspector"));
 		} else {
 			myShowSwingInspectorCheckbox.setEnabled(false);
 			myShowSwingInspectorCheckbox.setSelected(false);
-			myShowSwingInspectorCheckbox.setText(ExecutionBundle.message("show.swing.inspector.disabled"));
+			//myShowSwingInspectorCheckbox.setText(ExecutionBundle.message("show.swing.inspector.disabled"));
 		}
 	}
 
